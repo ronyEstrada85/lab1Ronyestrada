@@ -17,35 +17,58 @@ public class grupointur {
     /**
      * @param args the command line arguments
      */
+    public static boolean pass=false;
     public static void main(String[] args) {
         Scanner lectura = new Scanner(System.in);
         String letra = "";
+        String Name;
         
-        int opcion = Integer.parseInt(JOptionPane.showInputDialog(null, ""
+        int Password;
+        int opcion=0;
+        a:   while(opcion!=4){
+              opcion = Integer.parseInt(JOptionPane.showInputDialog(null, ""
                 + "1.   Login\n"
                 + "2.Reporte de restauranteso\n"
                 + " a. Reporte 1\n"
                 + " b. Reporte 2\n"
                 + " c. Reporte 3\n"
-                + "2.   Manejo de restaurantes\n"
+                + "3.   Manejo de restaurantes\n"
                 + " a. CrearoListar\n"
                 + " b. Modificar \n"
                 + " c. Eliminar"
-                + "3.   Salir."));
+                + "4.   Salir."));
 
         switch (opcion) {
             case 1: {
+                Name=JOptionPane.showInputDialog("Ingrese nombre");
                 
-                break;
-            }
-            case 2:{
+                password N = new password(Name);
+                
+                Password=Integer.parseInt(JOptionPane.showInputDialog("Ingrese password"));
+                password P = new password(Password);
+                
+                
+          break;  }
             
+            case 2:{
+            if (pass ==true){
+                System.out.println("hola");
+            }else {JOptionPane.showMessageDialog(null, "Ingrese en el login primero");}
             break;}
             
             case 3:{
-            
-            System.exit(opcion);}
+            if (pass ==true){
+           
+            }
+            }
+            case 4:{
+            if (pass ==true){
+            System.exit(opcion);
+            }
+            }
         }
+        }
+        
     }
 
 }
