@@ -28,7 +28,7 @@ public class grupointur {
 //********************************************************************************
         String nombredeFranquicia;
         String NombredeRestaurante;
-        String Ubicación;
+        String Ubicación = "";
         String Cantidaddeempleados;
         String Parqueo;
         String Áreadejuegos;
@@ -43,8 +43,8 @@ public class grupointur {
         int Password;
         int opcion = 0;
         a:
-        while (opcion
-                != 4) {
+        while (opcion != 4) {
+            ArrayList ubicacionrepetida = new ArrayList();
             opcion = Integer.parseInt(JOptionPane.showInputDialog(null, ""
                     + "1.   Login\n"
                     + "2.Reporte de restauranteso\n"
@@ -106,26 +106,43 @@ public class grupointur {
                         switch (letra) {
                             case "a": {
                                 // agregar listar
-
+                                int cont = 0;
                                 nombredeFranquicia = JOptionPane.showInputDialog("nombredeFranquicia");
                                 NombredeRestaurante = JOptionPane.showInputDialog("NombredeRestaurante");
-                                Ubicación = JOptionPane.showInputDialog("Ubicacion");
-                                Cantidaddeempleados = JOptionPane.showInputDialog("Cantidad de empleados");
-                                Parqueo = JOptionPane.showInputDialog(null, "Parqueo");
-                                Áreadejuegos = JOptionPane.showInputDialog(null, "Area de juego");
-                                Cantidaddemesas = JOptionPane.showInputDialog("cantidad de mesas");
-                                CantidaddeCajeros = JOptionPane.showInputDialog("cantidad de Cajeros");
-                                NombredeGerente = JOptionPane.showInputDialog(null, "Nombre de Gerente");
-                                Especialidaddelrestaurante = JOptionPane.showInputDialog(null, "Especialidad del restaurante");
-                                Estadodelrestaurante = JOptionPane.showInputDialog(null, "Especialidad del restaurante");
-
-                                restaurantes.add(new Restaurantes(nombredeFranquicia, NombredeRestaurante, Ubicación, Cantidaddeempleados,
-                                        Parqueo, Áreadejuegos, Cantidaddemesas, CantidaddeCajeros, NombredeGerente,
-                                        Especialidaddelrestaurante, Estadodelrestaurante));
-
-                                continue a;
+                                String Ubicacion1 = JOptionPane.showInputDialog("Ubicacion");
+                                    boolean check = false;
+                                for (int i = 0; i < ubicacionrepetida.size(); i++) {
+                                    
+                                    
+                                    if (ubicacionrepetida.get(i).equals(Ubicacion1)) {
+                                        check = true;
+                                        continue a;
+                                    }
+                                    if (check == true) {
+                                        Ubicación=Ubicacion1;
+                                        
+                                    }else{continue a;}
+                                
                             }
-                            case "b": {
+
+                            Cantidaddeempleados = JOptionPane.showInputDialog("Cantidad de empleados");
+                            Parqueo = JOptionPane.showInputDialog(null, "Parqueo");
+                            Áreadejuegos = JOptionPane.showInputDialog(null, "Area de juego");
+                            Cantidaddemesas = JOptionPane.showInputDialog("cantidad de mesas");
+                            CantidaddeCajeros = JOptionPane.showInputDialog("cantidad de Cajeros");
+                            NombredeGerente = JOptionPane.showInputDialog(null, "Nombre de Gerente");
+                            Especialidaddelrestaurante = JOptionPane.showInputDialog(null, "Especialidad del restaurante");
+                            Estadodelrestaurante = JOptionPane.showInputDialog(null, "Especialidad del restaurante");
+
+                            restaurantes.add(new Restaurantes(nombredeFranquicia, NombredeRestaurante, Ubicación, Cantidaddeempleados,
+                                    Parqueo, Áreadejuegos, Cantidaddemesas, CantidaddeCajeros, NombredeGerente,
+                                    Especialidaddelrestaurante, Estadodelrestaurante));
+
+                            continue a;
+                        }
+                    
+                
+                case "b": {
                                 //listar
                                 Restaurantes R = new Restaurantes();
                                 R.Print(restaurantes);
@@ -221,7 +238,7 @@ public class grupointur {
                             }
                             case "d": {
 // eliminar**********************************************************************************************************
-                                    boolean noruta = false;
+                                    // tengo error si no haya el numero
                                 int p = Integer.parseInt(
                                         JOptionPane.showInputDialog("ingrese posicion del "
                                                 + "Lista a eliminar"));
@@ -236,8 +253,11 @@ public class grupointur {
                     } else {
                         JOptionPane.showMessageDialog(null, "Ingrese en el login primero");
                     }
-                }
-                case 4: {
+            }
+        
+    
+
+case 4: {
                     if (pass == true) {
                         System.exit(opcion);
                     } else {
